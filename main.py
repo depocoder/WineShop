@@ -7,20 +7,14 @@ from pprint import pprint
 excel_data_df = pandas.read_excel('wines.xlsx')
 now = dt.now()
 wines = excel_data_df.to_dict(orient='record')
-sorted_wines = {
-    'Белые вина':{}, 
-    'Красные вина':{},
-    'Напитки':{}}
-
+sorted_wines = {}
 
 
 for item in wines:
-    if item['Категория']=='Белые вина':
-        sorted_wines['Белые вина'] =  sorted_wines['Белые вина'] + item 
-    elif item['Категория']=='Красные вина':
-        sorted_wines['Красные вина'] = sorted_wines['Красные вина'] + item 
+    if item['Категория'] in sorted_wines.keys():
+        sorted_wines[item['Категория']] =  sorted_wines[item['Категория']] + item 
     else:
-        sorted_wines['Напитки'] = item
+        sorted_wines[item['Категория']] = item
 print(sorted_wines)
 
 env = Environment(
