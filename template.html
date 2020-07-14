@@ -115,30 +115,30 @@
         </div>
         <div class="row">
           {% for сatalog in categories%}
-          <div class="col-12 section-title text-center mb-5">
-            <h2 class="d-block">{{сatalog}}</h2>
-          </div>
-          {% for wine in wines[сatalog]%}
-          <div class="col-lg-4 mb-5 col-md-6">
-            {% if wine.Акция == 'Выгодное предложение' %}
-              <img src="assets/profitable.png" style="width:10rem;height: 10rem;position:absolute;right: -20px;top: -20px;">
-            {%endif%}
-            <div class="wine_v_1 text-center pb-4 pt-5">
-              <img src="images/{{wine.Картинка}}" alt="Image" class="img-fluid">
-              <div>
-                <h3 class="heading mt-3 mb-3 text-dark">{{wine.Название}}</h3>
-                
-                <p>
-                  {% if not сatalog == 'Напитки' %}
-                  Сорт винограда - {{wine.Сорт}}<br/>
-                  {% endif %}
-                  <span class="price">{{wine.Цена}}руб.</span>
-                </p>
-                
+            <div class="col-12 section-title text-center mb-5">
+              <h2 class="d-block">{{сatalog}}</h2>
+            </div>
+            {% for wine in wines[сatalog]%}
+              <div class="col-lg-4 mb-5 col-md-6">
+                  {% if wine.Акция == 'Выгодное предложение' %}
+                    <img src="assets/profitable.png" style="width:10rem;height: 10rem;position:absolute;right: -20px;top: -20px;">
+                  {%endif%}
+              <div class="wine_v_1 text-center pb-4 pt-5">
+                <img src="images/{{wine.Картинка}}" alt="Image" class="img-fluid">
+                <div>
+                  <h3 class="heading mt-3 mb-3 text-dark">{{wine.Название}}</h3>
+                  
+                  <p>
+                    {% if not wine.Сорт == 'Напитки' %}
+                    Сорт винограда - {{wine.Сорт}}<br/>
+                    {% endif %}
+                    <span class="price">{{wine.Цена}}руб.</span>
+                  </p>
+                  
+                </div>
               </div>
             </div>
-          </div>
-          {%endfor%}
+            {%endfor%}
           {%endfor%}
         </div>
       </div>
