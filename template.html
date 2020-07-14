@@ -118,7 +118,7 @@
           <div class="col-12 section-title text-center mb-5">
             <h2 class="d-block">{{category}}</h2>
           </div>
-          {% for wine in winess[category]%}
+          {% for wine in wines_categories[category]%}
           <div class="col-lg-4 mb-5 col-md-6">
             {% if wine.Акция == 'Выгодное предложение' %}
               <img src="assets/profitable.png" style="width:10rem;height: 10rem;position:absolute;right: -20px;top: -20px;">
@@ -129,8 +129,8 @@
                 <h3 class="heading mt-3 mb-3 text-dark">{{wine.Название}}</h3>
                 
                 <p>
-                  {% if not category == 'Напитки' %}
-                  Сорт винограда - {{wine.Сорт}}<br/>
+                  {% if not wine.Сорт == 'Напитки' %}
+                    Сорт винограда - {{wine.Сорт}}<br/>
                   {% endif %}
                   <span class="price">{{wine.Цена}}руб.</span>
                 </p>
@@ -150,7 +150,7 @@
         <div class="row justify-content-center text-center align-items-center">
           <div class="col-md-8">
             <h2 style="font-size: 3rem;">проверено временем</h2>
-            <span class="sub-title" style="font-size: 2.5rem;">Уже {{year_count}} лет с вами</span>
+            <span class="sub-title" style="font-size: 2.5rem;">Уже {{year_counter}} лет с вами</span>
           </div>
         </div>
       </div>

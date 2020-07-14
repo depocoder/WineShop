@@ -8,10 +8,10 @@ from collections import defaultdict
 
 excel_data_df = pandas.read_excel('wines.xlsx')
 now = dt.now()
-wines = excel_data_df.to_dict(orient='record')
+wines_categories = excel_data_df.to_dict(orient='record')
 sorted_wines =  defaultdict(list)
 
-for wine in wines:
+for wine in wines_categories:
     sorted_wines[wine['Категория']].append(wine)
 
         
@@ -24,8 +24,8 @@ env = Environment(
 template = env.get_template('template.html')
 
 rendered_page = template.render(
-    year_count = now.year - 1920,
-    winess = (sorted_wines),
+    year_counter = now.year - 1920,
+    wines_categories = sorted_wines,
     categories = sorted(sorted_wines)
     
 
