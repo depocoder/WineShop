@@ -129,7 +129,7 @@
                 <h3 class="heading mt-3 mb-3 text-dark">{{wine.Название}}</h3>
                 
                 <p>
-                  {% if not wine.Сорт == 'Напитки' %}
+                  {% if not wine.Категория == 'Напитки' %}
                     Сорт винограда - {{wine.Сорт}}<br/>
                   {% endif %}
                   <span class="price">{{wine.Цена}}руб.</span>
