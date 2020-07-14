@@ -3,20 +3,19 @@ from datetime import datetime as dt
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 import pandas
 from pprint import pprint
+from collections import defaultdict
+
 
 excel_data_df = pandas.read_excel('wines.xlsx')
 now = dt.now()
 wines = excel_data_df.to_dict(orient='record')
-sorted_wines = {}
+sorted_wines =  defaultdict(list)
 
-
-for item in wines:
-    if item['Категория'] not in sorted_wines.keys():
-        sorted_wines[item['Категория']] =  []
-    sorted_wines[item['Категория']].append(item)
+for wine in wines:
+    sorted_wines[wine['Категория']].append(wine)
 
         
-pprint(sorted_wines)
+
 
 env = Environment(
     loader=FileSystemLoader('.'),
@@ -27,6 +26,7 @@ template = env.get_template('template.html')
 
 rendered_page = template.render(
     year_count = now.year - 1920,
+    winess = sorted(sorted_wines)
     
 
 )
