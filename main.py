@@ -11,11 +11,12 @@ sorted_wines = {}
 
 
 for item in wines:
-    if item['Категория'] in sorted_wines.keys():
-        sorted_wines[item['Категория']] =  sorted_wines[item['Категория']] + item 
-    else:
-        sorted_wines[item['Категория']] = item
-print(sorted_wines)
+    if item['Категория'] not in sorted_wines.keys():
+        sorted_wines[item['Категория']] =  []
+    sorted_wines[item['Категория']].append(item)
+
+        
+pprint(sorted_wines)
 
 env = Environment(
     loader=FileSystemLoader('.'),
