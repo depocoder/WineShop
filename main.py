@@ -16,7 +16,6 @@ for wine in wines:
 
         
 
-
 env = Environment(
     loader=FileSystemLoader('.'),
     autoescape=select_autoescape(['html', 'xml'])
@@ -26,7 +25,8 @@ template = env.get_template('template.html')
 
 rendered_page = template.render(
     year_count = now.year - 1920,
-    winess = sorted(sorted_wines)
+    winess = (sorted_wines),
+    categories = sorted(sorted_wines)
     
 
 )
