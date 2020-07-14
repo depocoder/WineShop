@@ -2,16 +2,14 @@ from http.server import HTTPServer, SimpleHTTPRequestHandler
 from datetime import datetime as dt
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 import pandas
-from pprint import pprint
 from collections import defaultdict
 
 
 excel_data_df = pandas.read_excel('wines.xlsx')
-now = dt.now()
-wines = excel_data_df.to_dict(orient='record')
+wines_data = excel_data_df.to_dict(orient='record')
 sorted_wines =  defaultdict(list)
 
-for wine in wines:
+for wine in wines_data:
     sorted_wines[wine['Категория']].append(wine)
 
         
@@ -23,10 +21,11 @@ env = Environment(
 
 template = env.get_template('template.html')
 
+now = dt.now()
 rendered_page = template.render(
-    year_count = now.year - 1920,
-    winess = (sorted_wines),
-    categories = sorted(sorted_wines)
+    year_counter = now.year - 1920,
+    wines = (sorted_wines),
+    сatalog = sorted(sorted_wines)
     
 
 )
