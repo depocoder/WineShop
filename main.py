@@ -25,7 +25,7 @@ template = env.get_template('template.html')
 
 rendered_page = template.render(
     year_counter = now.year - 1920,
-    wines_categories = sorted_wines,
+    drink_categories = sorted_wines,
     types_of_wines = sorted(sorted_wines)
     
 
