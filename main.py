@@ -4,9 +4,23 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 import pandas
 from pprint import pprint
 from collections import defaultdict
+import argparse
+
+def createPasrser():
+    parser = argparse.ArgumentParser(description='dir for your excel file')
+    parser.add_argument('indir', type=str,default = 'wines.xlsx', nargs="?", help='Specify the path to the folder in which lies excel file')
+    
+    return parser
+
+if __name__ =='__main__':
+    parser = createPasrser()
+    filepatch = parser.parse_args()
+    
+    if filepatch.indir != "wines.xlsx":
+        filepatch.indir = filepatch.indir + r'\wines.xlsx'
 
 
-excel_data_df = pandas.read_excel('wines.xlsx', na_values=' ', keep_default_na=False)
+excel_data_df = pandas.read_excel(filepatch.indir, na_values=' ', keep_default_na=False)
 wines_categories = excel_data_df.to_dict(orient='record')
 now = dt.now()
 sorted_wines =  defaultdict(list)
