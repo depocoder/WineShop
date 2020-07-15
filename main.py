@@ -6,9 +6,9 @@ from pprint import pprint
 from collections import defaultdict
 
 
-excel_data_df = pandas.read_excel('wines.xlsx')
-now = dt.now()
+excel_data_df = pandas.read_excel('wines.xlsx', na_values=' ', keep_default_na=False)
 wines_categories = excel_data_df.to_dict(orient='record')
+now = dt.now()
 sorted_wines =  defaultdict(list)
 
 for wine in wines_categories:
@@ -25,7 +25,7 @@ template = env.get_template('template.html')
 
 rendered_page = template.render(
     year_counter = now.year - 1920,
-    drink_categories = sorted_wines,
+    drinks_categories = sorted_wines,
     types_of_wines = sorted(sorted_wines)
     
 
