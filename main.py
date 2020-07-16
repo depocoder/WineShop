@@ -11,7 +11,7 @@ parser.add_argument('indir', type=str,default = 'wines.xlsx', nargs="?", help='S
 filepatch = parser.parse_args()
     
 if filepatch.indir != "wines.xlsx":
-    filepatch.indir = filepatch.indir + r'\wines.xlsx'
+    filepatch.indir = filepatch.indir
 
 
 excel_data_df = pandas.read_excel(filepatch.indir, na_values=' ', keep_default_na=False)
