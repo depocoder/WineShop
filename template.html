@@ -114,15 +114,15 @@
           </div>
         </div>
         <div class="row">
-          {% for category in types_of_wines %}
+          {% for category, drinks in drinks_categories %}
             <div class="col-12 section-title text-center mb-5">
               <h2 class="d-block">{{category}}</h2>
             </div>
-            {% for drink in drinks_categories[category]%}
+            {% for drink in drinks %}
               <div class="col-lg-4 mb-5 col-md-6">
                 {% if drink.Акция == 'Выгодное предложение' %}
                   <img src="assets/profitable.png" style="width:10rem;height: 10rem;position:absolute;right: -20px;top: -20px;">
-                {%endif%}
+                {% endif %}
                   <div class="wine_v_1 text-center pb-4 pt-5">
                     <img src="images/{{drink.Картинка}}" alt="Image" class="img-fluid">
                     <div>
@@ -131,13 +131,13 @@
                         {% if not drink.Категория == 'Напитки' %}
                           Сорт винограда - {{drink.Сорт}}<br/>
                         {% endif %}
-                        <span class="price">{{drink.Цена}} руб.</span>
+                        <span class="price">{{drink.Цена}}руб.</span>
                       </p>
                     </div>
                   </div>
                 </div>
-            {%endfor%}
-          {%endfor%}
+            {% endfor %}
+          {% endfor %}
         </div>
       </div>
     </div>

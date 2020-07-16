@@ -12,12 +12,11 @@ def createPasrser():
     
     return parser
 
-if __name__ =='__main__':
-    parser = createPasrser()
-    filepatch = parser.parse_args()
+parser = createPasrser()
+filepatch = parser.parse_args()
     
-    if filepatch.indir != "wines.xlsx":
-        filepatch.indir = filepatch.indir + r'\wines.xlsx'
+if filepatch.indir != "wines.xlsx":
+    filepatch.indir = filepatch.indir + r'\wines.xlsx'
 
 
 excel_data_df = pandas.read_excel(filepatch.indir, na_values=' ', keep_default_na=False)
@@ -44,6 +43,7 @@ rendered_page = template.render(
     
 
 )
+
 
 with open('index.html', 'w', encoding="utf8") as file:
     file.write(rendered_page)
