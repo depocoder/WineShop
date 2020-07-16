@@ -6,13 +6,8 @@ from pprint import pprint
 from collections import defaultdict
 import argparse
 
-def createPasrser():
-    parser = argparse.ArgumentParser(description='dir for your excel file')
-    parser.add_argument('indir', type=str,default = 'wines.xlsx', nargs="?", help='Specify the path to the folder in which lies excel file')
-    
-    return parser
-
-parser = createPasrser()
+parser = argparse.ArgumentParser(description='dir for your excel file')
+parser.add_argument('indir', type=str,default = 'wines.xlsx', nargs="?", help='Specify the path to the folder in which lies excel file')
 filepatch = parser.parse_args()
     
 if filepatch.indir != "wines.xlsx":
@@ -38,10 +33,8 @@ template = env.get_template('template.html')
 
 rendered_page = template.render(
     year_counter = now.year - 1920,
-    drinks_categories = sorted_wines,
-    types_of_wines = sorted(sorted_wines)
+    drinks_categories = sorted(sorted_wines.items())
     
-
 )
 
 
